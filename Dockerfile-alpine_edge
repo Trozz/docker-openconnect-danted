@@ -1,0 +1,14 @@
+FROM alpine:latest
+COPY vpn/ /vpn
+RUN \
+    apk add \
+      --no-cache \
+      --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+      --allow-untrusted \
+      bash \
+      dante-server \
+      openconnect \
+ && openconnect \
+ && cp /vpn/danted.conf /etc/danted.conf \
+ && chmod +x /vpn/*
+ENTRYPOINT /vpn/run.sh
