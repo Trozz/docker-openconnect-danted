@@ -8,7 +8,6 @@ RUN \
       bash \
       dante-server \
       openconnect \
- && openconnect \
  && cp /vpn/danted.conf /etc/danted.conf \
  && chmod +x /vpn/*
 ENTRYPOINT /vpn/run.sh
